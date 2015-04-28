@@ -1,3 +1,4 @@
 class Product < ActiveRecord::Base
 	validates_numericality_of :price
-end
+	validates_numericality_of :stock, greater_than_or_equal_to: 0
+	end
