@@ -2,23 +2,7 @@ class OrderItemsController < ApplicationController
   before_action :load_order, only: [:create]
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
 
-  # GET /order_items
-  # GET /order_items.json
-  def index
-    @order_items = OrderItem.all
-  end
-
-  # GET /order_items/1
-  # GET /order_items/1.json
-  def show
-  end
-
-  # GET /order_items/new
-  def new
-    @order_item = OrderItem.new
-  end
-
-  # GET /order_items/1/edit
+  
   def edit
   end
 
@@ -65,12 +49,12 @@ class OrderItemsController < ApplicationController
   private
 
     def load_order
-        @order = Order.find_or_initialize_by_id(session[:order_id], status: "unsubmitted")
-        if @order.new_record?
-          @order.save!
-          session[:order_id] = @order.id
-        end
-    end
+      @order = Order.find_or_initialize_by_id(session[:order_id], status: "unsubmitted")
+      if @order.new_record?
+        @order.save!
+        session[:order_id] = @order.id
+      end
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_order_item
       @order_item = OrderItem.find(params[:id])
